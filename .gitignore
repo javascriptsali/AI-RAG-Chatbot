@@ -1,0 +1,23 @@
+# Environment & secrets
+.env
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+
+# Uploaded files and Vector DB (Local storage)
+data/uploads/*.pdf
+data/chroma_db/
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
