@@ -4,7 +4,7 @@ A professional end-to-end Retrieval-Augmented Generation (RAG) application that 
 
 ## 🌟 Live Demo
 
-[https://ai-rag-chatbot-xdqy3xmreuckd5rbuexjhl.streamlit.app/]
+[Live Demo](https://ai-rag-chatbot-xdqy3xmreuckd5rbuexjhl.streamlit.app/)
 
 ## 📋 Project Overview
 
@@ -19,14 +19,18 @@ This project demonstrates a production-ready RAG pipeline, integrating vector da
 - ✅ **Interactive Web App**: Built with Streamlit for a clean, real-time chat interface
 - ✅ **Optimized Performance**: Implements caching for instant responses on subsequent queries
 
-## ️ Project Structure
+## Project Structure
 
 ```text
 AI-RAG-Chatbot/
+├── app/
+│   └── streamlit_app.py        # Interactive web application
 ├── data/
 │   ├── uploads/                # Uploaded PDF files
 │   └── chroma_db/              # Local vector database (gitignored)
-── src/
+├── docs/
+│   └── architecture.png        # System architecture diagram
+├── src/
 │   ├── __init__.py
 │   ├── ingest.py               # PDF loading, chunking, and embedding pipeline
 │   ├── rag_chain.py            # RAG chain logic (Retriever + LLM)
@@ -45,58 +49,53 @@ AI-RAG-Chatbot/
 
 ### Prerequisites
 
-Python 3.10+
-pip (Python package manager)
-A free Groq API key (Get it here)
-A free Hugging Face token (Get it here)
+- Python 3.10+
+- pip (Python package manager)
+- A free Groq API key
+- A free Hugging Face token
 
 ### Installation
 
 1. **Clone the repository:**
 
-```bash
-git clone https://github.com/javascriptsali/AI-RAG-Chatbot.git
-cd AI-RAG-Chatbot
-```
+  ```bash
+  git clone https://github.com/javascriptsali/AI-RAG-Chatbot.git
+  cd AI-RAG-Chatbot
+    ```
 
-1. **Create and activate virtual environment:**
+2. **Create and activate a virtual environment:**
 
-```bash
-python -m venv venv
-        ```
-   **On Windows:**
-   ```bash
-   venv\Scripts\activate
-        ```
-   **On Linux/Mac:**
-   ```bash
-   source venv/bin/activate
-        ```
+  ```bash
+  python -m venv venv
+  - **On Windows:**
+  venv\Scripts\activate
+  - **On Linux/Mac:**
+  source venv/bin/activate
+    ```
 
-2. **Install dependencies:**
-```bash
-pip install -r requirements.txt
-        ```
-
-```bash        
 3. **Install dependencies:**
-pip install -r requirements.txt
-        ```
+
+   ```bash
+   pip install -r requirements.txt
+    ```
 
 4. **Set up environment variables:**
-Create a .env file in the root directory and add your API keys:
-```bash
-GROQ_API_KEY=gsk_your_groq_key_here
-HF_TOKEN=hf_your_huggingface_token_here
-        ```
+   Create a `.env` file in the project root and add your API keys:
+
+  ```bash
+  GROQ_API_KEY=gsk_your_groq_key_here
+  HF_TOKEN=hf_your_huggingface_token_here
+    ```
 
 5. **Run the web application:**
-```bash
-streamlit run app/streamlit_app.py
-        ```
+
+  ```bash
+  streamlit run app/streamlit_app.py
+    ```
 
 6. **Open your browser:**
-Navigate to <http://localhost:8501>
+
+Visit <http://localhost:8501>
 
 ## 🧠 How It Works (The RAG Pipeline)
 
@@ -105,12 +104,11 @@ Navigate to <http://localhost:8501>
 - Storage: Vectors are stored in ChromaDB for fast semantic similarity search.
 - Retrieval: When a user asks a question, the top 3 most relevant chunks are retrieved from the database.
 - Generation: The retrieved context and the user's question are sent to Llama 3.1 via Groq API, which generates a precise answer based ONLY on the provided context.
-```
 
 ## 🔧 Technical Stack
 
 ```text
-Programming Language: Python 3.13
+Programming Language: Python 3.10+
 LLM Orchestration: LangChain & LangChain Community
 Vector Database: ChromaDB
 Embeddings: HuggingFace sentence-transformers
@@ -118,7 +116,7 @@ LLM Provider: Groq API (Llama 3.1 8B Instant)
 PDF Processing: PyPDF
 Web Framework: Streamlit
 Version Control: Git & GitHub
-        ```
+```
 
 ## 💡 Challenges Solved
 
