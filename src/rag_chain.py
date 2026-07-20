@@ -1,11 +1,12 @@
 """
 RAG Chain module. Connects the Vector Store retriever with Groq LLM for ultra-fast answers.
+Optimized for Streamlit Cloud deployment using fastembed.
 """
 
 import os
 from dotenv import load_dotenv
-from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Chroma
+from langchain_community.embeddings import FastEmbedEmbeddings
 from langchain_groq import ChatGroq
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
@@ -20,14 +21,13 @@ def get_rag_chain():
     Builds and returns the RAG chain for question answering using Groq.
     """
     # 1. Load the Vector Store and create a retriever
-    embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+    embeddings = FastEmbedEmbeddings(model_name="BAAI/bge-small-en-v1.5")
     vectorstore = Chroma(
         persist_directory="data/chroma_db",
         embedding_function=embeddings,
         collection_name="rag_collection"
     )
     
-    # Retrieve top 3 most relevant chunks
     retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
 
     # 2. Initialize the LLM with Groq
@@ -38,7 +38,7 @@ def get_rag_chain():
         max_tokens=500
     )
 
-    # 3. Define a simpler, more robust Prompt Template
+    # 3. Define the Prompt Template
     template = """You are a helpful and precise AI assistant. 
 Answer the question based ONLY on the following context. 
 If the question is about the general topic or summary of the document, infer it from the provided context.
@@ -66,11 +66,7 @@ Answer:"""
         | StrOutputParser()
     )
 
-    return rag_chain, Chroma(
-        persist_directory="data/chroma_db",
-        embedding_function=HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2"),
-        collection_name="rag_collection"
-    )
+    return rag_chain, vectorstore
 
 
 if __name__ == "__main__":
@@ -88,18 +84,12 @@ if __name__ == "__main__":
             chain, vectorstore = get_rag_chain()
             print("✅ RAG Chain loaded successfully!")
             
-            # 🔍 DEBUG: Let's see what's actually in the database
             print("\n🔍 DEBUG: Checking database content...")
-            all_docs = vectorstore.similarity_search("a", k=1) # Dummy search to check if DB has data
             print(f"   Total chunks in DB: {len(vectorstore.get()['ids'])}")
             
-            # 💡 IMPORTANT: Change this question to something SPECIFIC in your PDF!
-            # Example: If your PDF is a resume, ask: "What is the person's name?" or "What are their skills?"
-            test_question = "What is the main topic of this document?" 
-            
+            test_question = "What is the main topic of this document?"
             print(f"\n🤖 Asking: {test_question}")
             
-            # Let's also see what the retriever finds for this specific question
             retrieved_docs = vectorstore.similarity_search(test_question, k=3)
             print(f"   🔍 Retrieved {len(retrieved_docs)} chunks for this question.")
             

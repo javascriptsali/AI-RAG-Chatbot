@@ -1,13 +1,14 @@
 """
 Data ingestion module for the RAG Chatbot.
 Handles loading PDFs, chunking text, generating embeddings, and storing in ChromaDB.
+Optimized for Streamlit Cloud deployment using fastembed.
 """
 
 import os
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Chroma
+from langchain_community.embeddings import FastEmbedEmbeddings
 
 
 def ingest_pdf(pdf_path: str, persist_directory: str = "data/chroma_db") -> str:
@@ -33,24 +34,21 @@ def ingest_pdf(pdf_path: str, persist_directory: str = "data/chroma_db") -> str:
     # 2. Split text into chunks
     print("\n✂️ [Step 2] Chunking text...")
     text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=1000,      # Maximum characters per chunk
-        chunk_overlap=200,    # Overlap to maintain context between chunks
+        chunk_size=1000,      # Optimized for large documents
+        chunk_overlap=200,    # Maintains context between chunks
         length_function=len,
     )
     chunks = text_splitter.split_documents(documents)
     print(f"✅ Created {len(chunks)} text chunks.")
     
-    # 3. Initialize Embeddings (Local, free model)
-    print("\n🧠 [Step 3] Initializing Embedding Model (this may take a moment on first run)...")
-    # all-MiniLM-L6-v2 is a fast, lightweight, and highly effective embedding model
-    embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+    # 3. Initialize Embeddings using FastEmbed (lightweight, no PyTorch needed)
+    print("\n🧠 [Step 3] Initializing Embedding Model (fastembed)...")
+    embeddings = FastEmbedEmbeddings(model_name="BAAI/bge-small-en-v1.5")
     
     # 4. Store in Vector Database
     print("\n💾 [Step 4] Storing embeddings in ChromaDB...")
-    # Ensure the directory exists
     os.makedirs(persist_directory, exist_ok=True)
     
-    # Create and persist the vector store
     vectorstore = Chroma.from_documents(
         documents=chunks,
         embedding=embeddings,
@@ -63,8 +61,6 @@ def ingest_pdf(pdf_path: str, persist_directory: str = "data/chroma_db") -> str:
 
 
 if __name__ == "__main__":
-    # Test the ingestion pipeline with a sample PDF
-    # You need to place a sample PDF named 'sample.pdf' in the data/uploads folder
     sample_pdf_path = "data/uploads/sample.pdf"
     
     print("=" * 60)
