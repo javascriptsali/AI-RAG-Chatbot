@@ -83,12 +83,28 @@ def main():
             st.info(f"Saved to: `{file_path}`")
             
             if st.button("🚀 Process Document & Build Vector DB", type="primary"):
-                with st.spinner("Reading PDF, chunking text, and generating embeddings..."):
+                # --- NEW: Page count check before processing ---
+                try:
+                    from PyPDF2 import PdfReader
+                    pdf_reader = PdfReader(uploaded_file)
+                    page_count = len(pdf_reader.pages)
+                    
+                    MAX_PAGES = 200
+                    if page_count > MAX_PAGES:
+                        st.error(f"❌ Document too large! Maximum {MAX_PAGES} pages allowed. Your document has {page_count} pages.")
+                        st.stop()
+                except Exception:
+                    pass  # If we can't read pages, continue and let ingest.py handle it
+                # -----------------------------------------------
+                
+                with st.spinner("Reading PDF, chunking text, and generating embeddings... (This may take a few minutes for large documents)"):
                     try:
                         result = ingest_pdf(file_path)
                         st.success(result)
                         st.session_state["document_processed"] = True
                         st.session_state["document_name"] = uploaded_file.name
+                    except ValueError as e:
+                        st.error(f"❌ {e}")
                     except Exception as e:
                         st.error(f" Error processing document: {e}")
         else:

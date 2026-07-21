@@ -5,4 +5,5 @@ langchain-groq
 chromadb
 fastembed
 pypdf
+PyPDF2
 python-dotenv

@@ -125,9 +125,10 @@ AI-RAG-Chatbot/
 
 ### ⚠️ System Limitations (Cloud Deployment)
 
-- **Maximum File Size:** Optimized for PDF documents up to **10 MB** (approx. 50-100 pages) due to RAM constraints on the free tier of Streamlit Cloud.
-- **Processing Time:** Larger documents may take 1-2 minutes to process and embed. Please be patient during the "Building Vector DB" phase.
-- *For production use with large-scale documents, a dedicated server with 4GB+ RAM and batch-processing pipelines is recommended.*
+- **Maximum File Size:** 10 MB
+- **Maximum Page Count:** 200 pages (to prevent memory issues on free-tier cloud)
+- **Processing Time:** ~1-2 minutes for a 100-page document. Larger documents may take longer.
+- *For production use with large-scale documents (1000+ pages), a dedicated server with batch-processing pipelines and 4GB+ RAM is recommended.*
 
 ## 🔮 Future Improvements
 
