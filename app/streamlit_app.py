@@ -63,7 +63,7 @@ def main():
         
         if uploaded_file is not None:
             # --- NEW: File Size Check ---
-            MAX_FILE_SIZE_MB = 15
+            MAX_FILE_SIZE_MB = 10
             file_size_mb = uploaded_file.size / (1024 * 1024)
             
             if file_size_mb > MAX_FILE_SIZE_MB:
