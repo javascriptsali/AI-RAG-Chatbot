@@ -21,7 +21,7 @@ This project demonstrates a production-ready RAG pipeline, integrating vector da
 
 ## Project Structure
 
-```text
+```tree
 AI-RAG-Chatbot/
 ├── app/
 │   └── streamlit_app.py        # Interactive web application
@@ -58,44 +58,44 @@ AI-RAG-Chatbot/
 
 1. **Clone the repository:**
 
-  ```bash
-  git clone https://github.com/javascriptsali/AI-RAG-Chatbot.git
-  cd AI-RAG-Chatbot
-    ```
+   ```bash
+   git clone https://github.com/javascriptsali/AI-RAG-Chatbot.git
+   cd AI-RAG-Chatbot
+   ```
 
 2. **Create and activate a virtual environment:**
 
-  ```bash
-  python -m venv venv
-  - **On Windows:**
-  venv\Scripts\activate
-  - **On Linux/Mac:**
-  source venv/bin/activate
-    ```
+   ```bash
+   python -m venv venv
+   - **On Windows:**
+   venv\Scripts\activate
+   - **On Linux/Mac:**
+   source venv/bin/activate
+   ```
 
 3. **Install dependencies:**
 
    ```bash
    pip install -r requirements.txt
-    ```
+   ```
 
 4. **Set up environment variables:**
    Create a `.env` file in the project root and add your API keys:
 
-  ```bash
-  GROQ_API_KEY=gsk_your_groq_key_here
-  HF_TOKEN=hf_your_huggingface_token_here
-    ```
+   ```bash
+   GROQ_API_KEY=gsk_your_groq_key_here
+   HF_TOKEN=hf_your_huggingface_token_here
+   ```
 
 5. **Run the web application:**
 
-  ```bash
-  streamlit run app/streamlit_app.py
-    ```
+   ```bash
+   streamlit run app/streamlit_app.py
+   ```
 
 6. **Open your browser:**
 
-Visit <http://localhost:8501>
+   Visit `http://localhost:8501`
 
 ## 🧠 How It Works (The RAG Pipeline)
 
@@ -107,36 +107,30 @@ Visit <http://localhost:8501>
 
 ## 🔧 Technical Stack
 
-```text
-Programming Language: Python 3.10+
-LLM Orchestration: LangChain & LangChain Community
-Vector Database: ChromaDB
-Embeddings: HuggingFace sentence-transformers
-LLM Provider: Groq API (Llama 3.1 8B Instant)
-PDF Processing: PyPDF
-Web Framework: Streamlit
-Version Control: Git & GitHub
-```
+- Programming Language: Python 3.10+
+- LLM Orchestration: LangChain & LangChain Community
+- Vector Database: ChromaDB
+- Embeddings: HuggingFace sentence-transformers
+- LLM Provider: Groq API (Llama 3.1 8B Instant)
+- PDF Processing: PyPDF
+- Web Framework: Streamlit
+- Version Control: Git & GitHub
 
 ## 💡 Challenges Solved
 
-```text
-Escape Character Rendering: Fixed Markdown rendering issues for backslashes in technical responses.
-General Question Handling: Engineered prompts to allow the model to infer general document topics from retrieved chunks.
-Performance Optimization: Implemented @st.cache_resource to cache the embedding model and RAG chain, reducing response time from seconds to milliseconds.
-Context Window Management: Optimized chunk size (1000 chars) and overlap (200 chars) for large documents like books.
-        ```
+- Escape Character Rendering: Fixed Markdown rendering issues for backslashes in technical responses.
+- General Question Handling: Engineered prompts to allow the model to infer general document topics from retrieved chunks.
+- Performance Optimization: Implemented @st.cache_resource to cache the embedding model and RAG chain, reducing response. time from seconds to milliseconds.
+- Context Window Management: Optimized chunk size (1000 chars) and overlap (200 chars) for large documents like books.
 
 ## 🔮 Future Improvements
 
-```text
-Deploy on Streamlit Cloud for public access
-Add support for multiple document formats (DOCX, TXT, HTML)
-Implement conversation memory for multi-turn dialogues
-Add source citation (show which page the answer came from)
-Integrate with cloud storage (AWS S3, Google Drive)
-Add user authentication and document management
-        ```
+- [ ] Deploy on Streamlit Cloud for public access
+- [ ] Add support for multiple document formats (DOCX, TXT, HTML)
+- [ ] Implement conversation memory for multi-turn dialogues
+- [ ] Add source citation (show which page the answer came from)
+- [ ] Integrate with cloud storage (AWS S3, Google Drive)
+- [ ] Add user authentication and document management
 
 ## 👨‍💻 Author
 
@@ -146,5 +140,8 @@ Add user authentication and document management
 
 ## 📄 License
 
-This project is open source and available under the MIT License.
-If you found this project helpful, please give it a ⭐ on GitHub!
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
+**If you found this project helpful, please give it a ⭐ on GitHub!**
