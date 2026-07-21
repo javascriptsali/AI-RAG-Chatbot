@@ -130,6 +130,11 @@ AI-RAG-Chatbot/
 - **Processing Time:** ~1-2 minutes for a 100-page document. Larger documents may take longer.
 - *For production use with large-scale documents (1000+ pages), a dedicated server with batch-processing pipelines and 4GB+ RAM is recommended.*
 
+## key Features
+
+✅ Multilingual Support: Optimized for Persian (Farsi) documents using advanced multilingual embedding models.
+✅ OCR Fallback: Implements High-DPI image preprocessing and OCR to extract text from scanned Persian PDFs.
+
 ## 🔮 Future Improvements
 
 - [ ] Deploy on Streamlit Cloud for public access
