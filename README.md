@@ -18,6 +18,8 @@ This project demonstrates a production-ready RAG pipeline, integrating vector da
 - ✅ **Local Embeddings**: Uses HuggingFace `all-MiniLM-L6-v2` for secure, cost-free vectorization
 - ✅ **Interactive Web App**: Built with Streamlit for a clean, real-time chat interface
 - ✅ **Optimized Performance**: Implements caching for instant responses on subsequent queries
+- ✅ Multilingual Support: Optimized for Persian (Farsi) documents using advanced multilingual embedding models.
+- ✅ OCR Fallback: Implements High-DPI image preprocessing and OCR to extract text from scanned Persian PDFs.
 
 ## Project Structure
 
@@ -129,11 +131,6 @@ AI-RAG-Chatbot/
 - **Maximum Page Count:** 200 pages (to prevent memory issues on free-tier cloud)
 - **Processing Time:** ~1-2 minutes for a 100-page document. Larger documents may take longer.
 - *For production use with large-scale documents (1000+ pages), a dedicated server with batch-processing pipelines and 4GB+ RAM is recommended.*
-
-## key Features
-
-✅ Multilingual Support: Optimized for Persian (Farsi) documents using advanced multilingual embedding models.
-✅ OCR Fallback: Implements High-DPI image preprocessing and OCR to extract text from scanned Persian PDFs.
 
 ## 🔮 Future Improvements
 
