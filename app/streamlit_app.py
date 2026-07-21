@@ -62,7 +62,16 @@ def main():
         uploaded_file = st.file_uploader("Upload a PDF file", type=["pdf"])
         
         if uploaded_file is not None:
-            st.success(f"✅ File uploaded: {uploaded_file.name}")
+            # --- NEW: File Size Check ---
+            MAX_FILE_SIZE_MB = 15
+            file_size_mb = uploaded_file.size / (1024 * 1024)
+            
+            if file_size_mb > MAX_FILE_SIZE_MB:
+                st.error(f"❌ File is too large! Maximum allowed size is {MAX_FILE_SIZE_MB}MB. Your file is {file_size_mb:.2f}MB.")
+                st.stop() # Stop execution immediately
+            # ----------------------------
+            
+            st.success(f"✅ File uploaded: {uploaded_file.name} ({file_size_mb:.2f} MB)")
             
             upload_dir = "data/uploads"
             os.makedirs(upload_dir, exist_ok=True)

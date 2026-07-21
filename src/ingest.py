@@ -5,6 +5,7 @@ Optimized for Streamlit Cloud deployment using fastembed.
 """
 
 import os
+import gc
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Chroma
@@ -57,6 +58,10 @@ def ingest_pdf(pdf_path: str, persist_directory: str = "data/chroma_db") -> str:
     )
     
     print(f"✅ Successfully ingested data into: {persist_directory}")
+    # --- NEW: Force Garbage Collection to free up RAM ---
+    print("🧹 Cleaning up memory...")
+    gc.collect()
+    # ----------------------------------------------------
     return f"Success: Processed {len(chunks)} chunks from {os.path.basename(pdf_path)}"
 
 
