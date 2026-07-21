@@ -7,3 +7,6 @@ fastembed
 pypdf
 PyPDF2
 python-dotenv
+PyMuPDF
+numpy
+opencv-python
