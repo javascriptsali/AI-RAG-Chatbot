@@ -23,8 +23,8 @@ def get_rag_chain():
         collection_name="rag_collection"
     )
     
-    # 2. DECREASED K to 5: Ensures the specific chunk is captured despite spacing issues
-    retriever = vectorstore.as_retriever(search_kwargs={"k": 5})
+    # 2. DECREASED K to 3: Ensures the specific chunk is captured despite spacing issues
+    retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
 
     # 3. Initialize LLM
     llm = ChatGroq(
