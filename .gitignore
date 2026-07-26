@@ -21,3 +21,6 @@ data/chroma_db/
 .idea/
 .DS_Store
 Thumbs.db
+src/test_pdf.py
+src/debug_search.py
+src/check_909.py

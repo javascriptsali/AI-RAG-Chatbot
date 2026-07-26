@@ -19,7 +19,6 @@ This project demonstrates a production-ready RAG pipeline, integrating vector da
 - ✅ **Interactive Web App**: Built with Streamlit for a clean, real-time chat interface
 - ✅ **Optimized Performance**: Implements caching for instant responses on subsequent queries
 - ✅ **Multilingual Support**: Optimized for Persian (Farsi) documents using advanced multilingual embedding models.
-- ✅ **OCR Fallback**: Implements High-DPI image preprocessing and OCR to extract text from scanned Persian PDFs.
 
 ## Project Structure
 

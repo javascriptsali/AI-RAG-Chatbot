@@ -10,4 +10,3 @@ python-dotenv
 PyMuPDF
 numpy
 opencv-python
-easyocr
