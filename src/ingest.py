@@ -80,7 +80,7 @@ def ingest_pdf(pdf_path: str, persist_directory: str = "data/chroma_db") -> str:
     )
     
     # CRITICAL: Process in VERY SMALL batches (10 chunks at a time)
-    BATCH_SIZE = 5  # Reduced from 10 to 5
+    BATCH_SIZE = 2  # Reduced from 10 to 2 for cluster environments with limited RAM
     total_chunks = len(chunks)
     
     print(f"   Processing {total_chunks} chunks in batches of {BATCH_SIZE}...")
