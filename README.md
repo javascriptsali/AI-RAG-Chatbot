@@ -10,15 +10,15 @@ A professional end-to-end Retrieval-Augmented Generation (RAG) application that 
 
 This project demonstrates a production-ready RAG pipeline, integrating vector databases, embedding models, and large language models (LLMs) to build an intelligent document question-answering system.
 
-### Key Features
+## Key Features
 
-- ✅ **PDF Ingestion Pipeline**: Extracts, chunks, and embeds text from any PDF document
-- ✅ **Vector Database**: Uses ChromaDB for efficient semantic search and retrieval
-- ✅ **Ultra-Fast Inference**: Powered by Groq API (Llama 3.1) for sub-second response times
-- ✅ **Local Embeddings**: Uses HuggingFace `all-MiniLM-L6-v2` for secure, cost-free vectorization
-- ✅ **Interactive Web App**: Built with Streamlit for a clean, real-time chat interface
-- ✅ **Optimized Performance**: Implements caching for instant responses on subsequent queries
-- ✅ **Multilingual Support**: Optimized for Persian (Farsi) documents using advanced multilingual embedding models.
+✅ **Robust PDF Ingestion:** Extracts, cleans, and chunks text from PDFs, with built-in safeguards against garbled or reversed text extraction.
+✅ **Vector Database:** Uses ChromaDB for efficient, scalable semantic search and retrieval.
+✅ **Ultra-Fast Inference:** Powered by Groq API (Llama 3.1) for sub-second, high-quality response times.
+✅ **Advanced Multilingual Embeddings:** Uses `nomic-ai/nomic-embed-text-v1.5` for highly accurate, secure, and cost-free Persian (Farsi) vectorization.
+✅ **Interactive Web App:** Built with Streamlit for a clean, real-time, and user-friendly chat interface.
+✅ **Cloud-Optimized Performance:** Implements memory-efficient batch processing and aggressive garbage collection to prevent RAM overload on free-tier cloud deployments (e.g., Streamlit Cloud).
+✅ **Smart Chunking Strategy:** Optimized chunk size (2000) and high overlap (300) specifically tuned to preserve Q&A pairs and tabular data context.
 
 ## Project Structure
 
