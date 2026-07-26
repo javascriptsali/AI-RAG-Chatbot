@@ -12,6 +12,7 @@ from langchain_community.embeddings import FastEmbedEmbeddings
 from langchain_core.documents import Document
 
 
+
 def extract_text_simple(pdf_path: str) -> list:
     documents = []
     doc = fitz.open(pdf_path)
