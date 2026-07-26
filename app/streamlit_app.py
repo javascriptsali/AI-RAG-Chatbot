@@ -53,6 +53,11 @@ def load_rag_chain():
 
 def main():
     st.title("🤖 AI Document Chatbot (RAG)")
+    st.info(
+    "💡 **Deployment Notice:** This application is hosted on a free-tier cloud environment with strict RAM limitations. "
+    "For optimal performance and to prevent memory crashes, please test it using **short, text-based Q&A documents** "
+    "(e.g., under 10 pages). Avoid uploading large, heavily scanned, or image-based PDFs."
+)
     st.markdown("Upload a PDF document and ask questions about its contents. The AI will answer based **only** on the provided document.")
 
     # Sidebar for file upload and processing
